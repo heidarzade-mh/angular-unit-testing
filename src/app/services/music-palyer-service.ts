@@ -1,6 +1,6 @@
 import { Music } from "../models/music";
 import { HttpClient } from "@angular/common/http";
-import { Inject, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class MusicPlayerService {
