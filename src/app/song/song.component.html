@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="information-container">
+    <div class="id">
+      شناسه: {{music?.id}}
+    </div>
+    <div class="name">
+      نام: {{music?.name}}
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <button (click)="onSelect.emit(music)">انتخاب</button>
+  </div>
+</div>
