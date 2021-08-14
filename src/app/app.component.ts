@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   public selectedMusic?: Music;
   public musics: Music[] = [];
 
-  public constructor(public musicPlayerService: MusicPlayerService) {
+  public constructor(private musicPlayerService: MusicPlayerService) {
   }
 
   public async ngOnInit(): Promise<void> {

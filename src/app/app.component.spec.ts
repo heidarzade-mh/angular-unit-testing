@@ -28,7 +28,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create the app', async () => {
+  it('should create the app', async () => {
     const tmpMusic: Music = {
       id: 1,
       name: 'name',
@@ -41,7 +41,7 @@ describe('AppComponent', () => {
 
     const musics = [tmpMusic];
 
-    spyOn(component.musicPlayerService, "getMusics").and.returnValue(Promise.resolve(musics));
+    spyOn((component as any).musicPlayerService, "getMusics").and.returnValue(Promise.resolve(musics));
 
     await component.ngOnInit();
 
