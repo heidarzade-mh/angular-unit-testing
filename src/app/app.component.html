@@ -9,5 +9,5 @@
 </div>
 
 <div class="body">
-  <app-song *ngFor="let music of musics" [music]="music" (onSelect)="changeSelected($event)"></app-song>
+  <app-song *ngFor="let music of musics" [music]="music" (selected)="changeSelected($event)"></app-song>
 </div>

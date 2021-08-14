@@ -11,7 +11,9 @@ export class SongComponent {
   public music: Music | undefined;
 
   @Output()
-  public onSelect = new EventEmitter<Music>();
+  public selected = new EventEmitter<Music>();
 
-
+  public select(): void {
+    this.selected.emit(this.music)
+  }
 }
