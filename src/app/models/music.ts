@@ -1,9 +1,9 @@
 export class Music {
-  public id: number | undefined;
-  public name: string | undefined;
-  public artist: string | undefined;
-  public lyrics: string | undefined;
-  public file: string | undefined;
-  public cover: string | undefined;
-  public publish_date: string | undefined;
+  public id!: number;
+  public name!: string;
+  public artist?: string;
+  public lyrics?: string;
+  public file?: string;
+  public cover?: string;
+  public publish_date?: string;
 }

@@ -8,9 +8,9 @@ describe('SongComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SongComponent ]
+      declarations: [SongComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -20,6 +20,22 @@ describe('SongComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const tmpMusic = {
+      id: 1,
+      name: 'name',
+      artist: 'artist',
+      lyrics: 'lyrics',
+      file: 'file',
+      cover: 'cover',
+      publish_date: 'publish_date'
+    };
+
+    component.music = tmpMusic;
+
+    component.selected.subscribe((music) => {
+      expect(music).toBe(tmpMusic);
+    });
+
+    component.select();
   });
 });

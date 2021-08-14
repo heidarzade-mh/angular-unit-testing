@@ -1,35 +1,50 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MusicPlayerService } from "./services/music-palyer-service";
+import { HttpClientModule } from "@angular/common/http";
+import { Music } from "./models/music";
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientModule
       ],
       declarations: [
         AppComponent
       ],
+      providers: [MusicPlayerService]
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'unittest'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    // expect(app.title).toEqual('unittest');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('unittest app is running!');
+  });
+
+  fit('should create the app', async () => {
+    const tmpMusic: Music = {
+      id: 1,
+      name: 'name',
+      artist: 'artist',
+      lyrics: 'lyrics',
+      file: 'file',
+      cover: 'cover',
+      publish_date: 'publish_date'
+    };
+
+    const musics = [tmpMusic];
+
+    spyOn(component.musicPlayerService, "getMusics").and.returnValue(Promise.resolve(musics));
+
+    await component.ngOnInit();
+
+    expect(component.musics).toBe(musics);
   });
 });
